@@ -1,0 +1,60 @@
+h2 {
+	text-align: center;
+	position: relative;
+    bottom: 15px;
+}
+
+nav {
+	width: 90%;
+    margin: 0 auto;
+}
+
+footer {
+	background-image: url("https://blog.jobandtalent.com/files/2016/07/demanda-empleo.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-size: cover;
+	opacity: 0.5;
+	padding: 10%;
+}
+
+#title {
+	padding: 150px;
+	background-image: url("https://blog.jobandtalent.com/files/2016/07/demanda-empleo.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+    background-size: cover;
+	opacity: 0.9;
+	text-shadow:
+	-2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	font-size: 5.5rem;
+}
+
+#body {
+	background-color: #fff;
+	height: 500px;
+}
+
+#box {
+	position: relative;
+    margin: 57px;
+}
+
+.form-inline {
+	position: relative;
+    top: 0;
+    float: left;
+}
+#login .container #login-row #login-column #login-box {
+	margin-top: 120px;
+	max-width: 600px;
+	height: 320px;
+	background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+	margin-top: -85px;
+}
+   
