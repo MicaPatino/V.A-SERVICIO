@@ -1,0 +1,327 @@
+var timeline = new Amadre_Animation();
+var diagram = new Performance_Align();
+
+
+var timeSteps;
+var cores;
+var regras = {
+	"step1":{
+		"bg1":false,
+		"bg2":false
+	},
+	"step2":{
+		"bg1":false,
+		"bg2":false
+	},
+	"step3":{
+		"bg1":false,
+		"bg2":false
+	},
+	"cta":{
+		"cta2":false
+	}
+};
+
+function initBanner(){
+
+	/// COR_BOX | COR_TEXTOS | COR_CTA_BG_CIMA | COR_CTA_BG_BAIXO | COR_CTA_TEXT
+
+	cores = dynamicContent.DCOLegoBox[0].Text_Color;
+	cores = cores.split("|");
+
+
+	timeSteps = dynamicContent.DCOLegoBox[0].Time_step;
+	timeSteps = timeSteps.split("|");
+
+
+	// 300X250_feature
+
+	var s1_bg1 = dynamicContent.DCOLegoBox[0].image_1.Url;
+	var s1_bg2 = dynamicContent.DCOLegoBox[0].image_2.Url;
+
+	var s2_bg1 = dynamicContent.DCOLegoBox[0].image_3.Url;
+	var s2_bg2 = dynamicContent.DCOLegoBox[0].image_4.Url;
+
+	var s3_bg1 = dynamicContent.DCOLegoBox[0].image_5.Url;
+	var s3_bg2 = dynamicContent.DCOLegoBox[0].image_6.Url;
+
+
+
+
+	var s1_txt1 = dynamicContent.DCOLegoBox[0].highlight_title_1;
+	var s1_txt2 = dynamicContent.DCOLegoBox[0].highlight_txt_1;
+
+	var s2_txt1 = dynamicContent.DCOLegoBox[0].highlight_title_2;
+	var s2_txt2 = dynamicContent.DCOLegoBox[0].highlight_txt_2;
+
+	var s3_txt1 = dynamicContent.DCOLegoBox[0].highlight_title_3;
+	var s3_txt2 = dynamicContent.DCOLegoBox[0].highlight_txt_3;
+
+
+
+	var s3_ctatxt1 = dynamicContent.DCOLegoBox[0].Call_to_action_1;
+	var s3_ctatxt2 = dynamicContent.DCOLegoBox[0].Call_to_action_2;
+
+
+
+
+
+	(s1_bg1.indexOf("empty.png")==-1) ? regras.step1.bg1 = true : regras.step1.bg1 = false;
+	(s1_bg2.indexOf("empty.png")==-1) ? regras.step1.bg2 = true : regras.step1.bg2 = false;
+	(s2_bg1.indexOf("empty.png")==-1) ? regras.step2.bg1 = true : regras.step2.bg1 = false;
+	(s2_bg2.indexOf("empty.png")==-1) ? regras.step2.bg2 = true : regras.step2.bg2 = false;
+	(s3_bg1.indexOf("empty.png")==-1) ? regras.step3.bg1 = true : regras.step3.bg1 = false;
+	(s3_bg2.indexOf("empty.png")==-1) ? regras.step3.bg2 = true : regras.step3.bg2 = false;
+
+	(s3_ctatxt2 != "#vazio") ? regras.cta.cta2 = true : regras.cta.cta2 = false;
+
+
+	if(regras.step1.bg1){
+		el(".s1_bg1").style.background = "url("+s1_bg1+") no-repeat";
+	}
+	else{
+		el(".s1_bg1").style.display = "none";
+	}
+
+	if(regras.step1.bg2){
+		el(".s1_bg2").style.background = "url("+s1_bg2+") no-repeat";
+	}
+	else{
+		el(".s1_bg2").style.display = "none";
+	}
+
+	if(regras.step2.bg1){
+		el(".s2_bg1").style.background = "url("+s2_bg1+") no-repeat";
+	}
+	else{
+		el(".s2_bg1").style.display = "none";
+	}
+
+	if(regras.step2.bg2){
+		el(".s2_bg2").style.background = "url("+s2_bg2+") no-repeat";
+	}
+	else{
+		el(".s2_bg2").style.display = "none";
+	}
+
+	if(regras.step3.bg1){
+		el(".s3_bg1").style.background = "url("+s3_bg1+") no-repeat";
+	}
+	else{
+		el(".s3_bg1").style.display = "none";
+	}
+
+	if(regras.step3.bg2){
+		el(".s3_bg2").style.background = "url("+s3_bg2+") no-repeat";
+	}
+	else{
+		el(".s3_bg2").style.display = "none";
+	}	
+
+
+	////////
+
+
+
+
+	el(".s1_txt1").innerHTML = s1_txt1;
+	el(".s1_txt2").innerHTML = s1_txt2;
+
+	el(".s2_txt1").innerHTML = s2_txt1;
+	el(".s2_txt2").innerHTML = s2_txt2;
+
+	el(".s3_txt1").innerHTML = s3_txt1;
+	el(".s3_txt2").innerHTML = s3_txt2;
+
+
+	el(".s3_ctatxt1").innerHTML = s3_ctatxt1;
+	el(".s3_ctatxt2").innerHTML = s3_ctatxt2;
+
+
+	///
+
+	el(".s1_mask").style.backgroundColor = cores[0];
+	el(".s2_mask").style.backgroundColor = cores[0];
+	el(".s3_mask").style.backgroundColor = cores[0];
+
+
+	el(".s1_txt1").style.color = cores[1];
+	el(".s1_txt2").style.color = cores[1];
+	el(".s2_txt1").style.color = cores[1];
+	el(".s2_txt2").style.color = cores[1];
+	el(".s3_txt1").style.color = cores[1];
+	el(".s3_txt2").style.color = cores[1];
+
+
+	el(".s3_ctaUp1").style.backgroundColor = cores[2];
+	el(".s3_ctaUp2").style.backgroundColor = cores[2];
+
+	el(".s3_ctaDown1").style.backgroundColor = cores[3];
+	el(".s3_ctaDown2").style.backgroundColor = cores[3];
+
+
+	el(".s3_ctatxt1").style.color = cores[4];
+	el(".s3_ctatxt2").style.color = cores[4];
+
+
+
+
+
+
+
+	// CLICK EXIT
+	var urlExit1 = dynamicContent.DCOLegoBox[0].exit_url_1.Url;
+	var urlExit2 = dynamicContent.DCOLegoBox[0].exit_url_2.Url;
+	if(!regras.cta.cta2){
+		el('.hitArea').style.pointerEvents = 'auto';
+		el('.hitArea').addEventListener('click', bannerExitHandler1, false);
+	}
+	else{
+		el('.hitArea').style.pointerEvents = 'auto';
+		el('.hitArea').addEventListener('click', bannerExitHandler1, false);
+		el('.s3_ctabg1').addEventListener('click', bannerExitHandler1, false);
+		el('.s3_ctabg2').addEventListener('click', bannerExitHandler2, false);
+	}
+
+	// ████████████████████████████████████████████████████████████ EXIT
+	function bannerExitHandler1(e) { Enabler.exitOverride('Banner Exit', urlExit1); }
+	function bannerExitHandler2(e) { Enabler.exitOverride('Banner Exit', urlExit2); }
+
+
+
+	setTimeout(function(){
+    	initAnimation();
+    	alignAll();
+    },1000);
+
+
+}
+
+
+
+function alignAll(){
+
+	// diagram.automateText(".s3_ctatxt1",140,true);
+
+	var alturaCta1 = el(".s3_ctabg1").clientHeight;
+
+	el(".s3_ctabg2").style.top = 460+alturaCta1+"px";
+
+
+	diagram.alignText([
+			[".s3_ctabg1","left",160],
+			[".s3_ctabg2","left",160]
+	]);
+
+}
+
+
+
+
+var initAnimation = function () {
+	// start
+
+	timeline.animationElements('cortina_out', [['#banner', 0.1]]);
+	timeline.animationElements('bg_in', [['.s1_bg1', 0]]);
+	timeline.animationElements('bg_in', [['.s1_bg2', 0]]);
+	timeline.animationElements('reset', [['.s1_logo1', 0.1]]);
+	timeline.animationElements('box_in', [['.s1_box1', 0]]);
+	timeline.animationElements('txt_in', [['.s1_txt1', 0.4]]);
+	timeline.animationElements('txt_in', [['.s1_txt2', 0]]);
+
+		// out
+
+	if(regras.step2.bg1||regras.step2.bg2){
+		timeline.animationElements('reset', [['.s2_bg2', timeSteps[0]]]);
+		timeline.animationElements('reset', [['.s2_bg1', 0]]);
+		timeline.animationElements('all_out', [['.s1_bg1', .2]]);
+		timeline.animationElements('all_out', [['.s1_bg2', 0]]);
+		timeline.animationElements('all_out', [['.s1_txt1', 0]]);
+		timeline.animationElements('all_out', [['.s1_txt2', 0]]);
+		timeline.animationElements('all_out', [['.s1_box1', 0]]);
+		timeline.animationElements('transition_out', [['.s2_bg2', .2]]);
+	}
+	else{
+		timeline.animationElements('txt_out', [['.s1_txt1', timeSteps[0]]]);
+		timeline.animationElements('txt_out', [['.s1_txt2', 0]]);
+		timeline.animationElements('txt_out', [['.s1_box1', 0]]);
+	}
+
+		
+	
+	// // STEP02
+	timeline.animationElements('box_in', [['.s2_box1', 0.2]]);
+	timeline.animationElements('txt_in', [['.s2_txt1', 0.4]]);
+	timeline.animationElements('txt_in', [['.s2_txt2', 0]]);
+
+	// 	// out
+		
+	if(regras.step3.bg1||regras.step3.bg2){
+		timeline.animationElements('reset', [['.s3_bg2', timeSteps[1]]]);
+		timeline.animationElements('reset', [['.s3_bg1', 0]]);
+		timeline.animationElements('all_out', [['.s2_bg2', .2]]);
+		timeline.animationElements('bg_out', [['.s2_bg2', 0]]);
+		timeline.animationElements('all_out', [['.s1_bg1', 0]]);
+		timeline.animationElements('all_out', [['.s1_bg2', 0]]);
+		timeline.animationElements('all_out', [['.s1_txt1', 0]]);
+		timeline.animationElements('all_out', [['.s1_txt2', 0]]);
+		timeline.animationElements('all_out', [['.s1_box1', 0]]);
+		timeline.animationElements('all_out', [['.s2_txt1', 0]]);
+		timeline.animationElements('all_out', [['.s2_txt2', 0]]);
+		timeline.animationElements('all_out', [['.s2_box1', 0]]);
+		timeline.animationElements('transition_out', [['.s3_bg1', .2]]);
+		timeline.animationElements('transition_out', [['.s3_bg2', .2]]);
+	
+		// // STEP03
+		timeline.animationElements('box_in', [['.s3_box1', 0.2]]);
+		timeline.animationElements('txt_in', [['.s3_txt1', 0.4]]);
+		timeline.animationElements('txt_in', [['.s3_txt2', 0]]);
+		if(regras.cta.cta2){
+			timeline.animationElements('reset2', [['.s3_ctabg2', -.1]]);
+			timeline.animationElements('reset2', [['.s3_ctabg1', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt2', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt1', 0]]);
+			timeline.animationElements('cta_fx', [['.cta_fx1', 1.5]]);
+			timeline.animationElements('cta_fx', [['.cta_fx2', 0]]);
+			timeline.animationElements('STOP_HERE', [['.cta_fx2', 0]],function(){
+				el('.hitArea').style.zIndex = 998;
+				el('.s3_ctabg2').style.zIndex = 999;
+			});
+		}
+		else{
+			timeline.animationElements('reset2', [['.s3_ctabg1', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt1', 0]]);
+			timeline.animationElements('cta_fx', [['.cta_fx1', 1.5]]);
+		}
+
+	}
+	else{
+
+		if(regras.cta.cta2){
+			timeline.animationElements('reset2', [['.s3_ctabg2', -.1]]);
+			timeline.animationElements('reset2', [['.s3_ctabg1', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt2', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt1', 0]]);
+			timeline.animationElements('cta_fx', [['.cta_fx1', 1.5]]);
+			timeline.animationElements('cta_fx', [['.cta_fx2', 0]]);
+			timeline.animationElements('STOP_HERE', [['.cta_fx2', 0]],function(){
+				el('.hitArea').style.zIndex = 998;
+				el('.s3_ctabg2').style.zIndex = 999;
+			});
+		}
+		else{
+			timeline.animationElements('reset2', [['.s3_ctabg1', 0]]);
+			timeline.animationElements('reset2', [['.s3_ctatxt1', 0]]);
+			timeline.animationElements('cta_fx', [['.cta_fx1', 1.5]]);
+		}
+
+		
+
+	}
+
+
+		
+
+	// end
+
+};

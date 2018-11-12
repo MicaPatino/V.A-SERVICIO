@@ -19,8 +19,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/Servicios">Servicios</a>
             </li>
+            <li class = "nav-item">
+                <a class="nav-link" id="username" href="/account"></a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Ingresar</a>
+                <a id="ingresar" class="nav-link" href="/login">Ingresar</a>
             </li>
             <li>
                 <form class="form-inline">
@@ -41,7 +44,19 @@
         </div>
     </section>
     <footer>
-
     </footer>
 </body>
+<script>
+        var username = localStorage.getItem("username");
+        var user = localStorage.getItem("user");
+        if (user != null) {
+            document.getElementById("ingresar").style.display="none";
+            document.getElementById("username").innerHTML = JSON.parse(username);
+        }
+        else {
+            document.getElementById("ingresar").style.display="block";
+            document.getElementById("username").style.display="none";
+        }
+    
+</script>
 </html>

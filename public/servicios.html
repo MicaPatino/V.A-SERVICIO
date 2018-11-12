@@ -2,9 +2,103 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<style>
+			.col-2 {
+				background-color: #d6ff7f;
+				margin: 4%;
+				text-align: center;
+			}
+			img {
+				width: 100%;
+				margin-bottom: 10%;	
+			}
+			p {
+				font-family: sans-serif;
+				margin-top: 9px;
+				font-weight: bold;
+			}
+	</style>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
-	<h1>SERVVICIOSSS</h1>
+	<header>
+    	<h1 id="title">V.A-Servicios</h1>
+    	<nav class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Servicios">Servicios</a>
+			</li>
+			<li class = "nav-item">
+					<a class="nav-link" id="username" href="/account"></a>
+				</li>
+            <li class="nav-item">
+                <a id="ingresar" class="nav-link" href="/login">Ingresar</a>
+            </li>
+            <li>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button type="button" class="btn btn-outline-primary">Buscar</button>
+                </form>
+            </li>
+		</nav>
+	</header>
+	<div class="row">
+		<div class="col-2">
+			<p>Climatizacion</p>
+			<a title="climatizacion" href="/servicios/climatizacion"><img src="./images/climatizacion.jpg" alt="climatizacion"></a>
+		</div>
+		<div class="col-2">
+			<p>Pintura</p>
+			<a title="pintura" href="/servicios/pintura"><img src="./images/pintura.jpg" alt="pintura"></a>
+		</div>
+		<div class="col-2">
+			<p>Plomeria</p>
+			<a title="plomeria" href="/servicios/plomeria"><img src="./images/plomeria.jpg" alt="plomeria"></a>
+		</div>
+		<div class="col-2">
+			<p>Electricidad</p>
+			<a title="electricidad" href="/servicios/electricidad"><img src="./images/electricidad.jpg" alt="electricidad"></a>
+		</div>
+		<div class="col-2">
+			<p>Gas</p>
+			<a title="gas" href="/servicios/gas"><img src="./images/gas.jpg" alt="gas"></a>
+		</div>
+		<div class="col-2">
+			<p>Mudanzas</p>
+			<a title="mudanzas" href="/servicios/mudanzas"><img src="./images/mudanzas.jpg" alt="mudanzas"></a>
+		</div>
+		<div class="col-2">
+			<p>Electrodomesticos</p>
+			<a title="electrodomesticos" href="/servicios/electrodomesticos"><img src="./images/electrodomestico.jpg" alt="electrodomesticos"></a>
+		</div>
+		<div class="col-2">
+			<p>Cocina</p>
+			<a title="cocina" href="/servicios/cocina"><img src="./images/cocina.jpg" alt="cocina"></a>
+		</div>
+		<div class="col-2">
+			<p>Remodelacion y refacciones</p>
+			<a title="remodelacion y refaccion" href="/servicios/remodelacion-y-refaccion"><img src="./images/refaccion.jpg" alt="remodelacion y refaccion"></a>
+		</div>
+	</div>
+	<footer>
 
+    </footer>
 </body>
+<script>
+		var username = localStorage.getItem("username");
+        var user = localStorage.getItem("user");
+        if (user != null) {
+            document.getElementById("ingresar").style.display="none";
+            document.getElementById("username").innerHTML = JSON.parse(username);
+        }
+        else {
+            document.getElementById("ingresar").style.display="block";
+            document.getElementById("username").style.display="none";
+        }</script>
 </html>

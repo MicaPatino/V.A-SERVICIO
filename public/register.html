@@ -8,6 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
     <style>
         #register {
             margin: 150px;
@@ -35,67 +39,110 @@
     <header>
             <h1>V.A-Servicios</h1>
     </header>
-    <form id="register">
-            <h3 class="text-center ">Register</h3>
-            <div class="form-row">
-              <div class="form-group col-md-6">
+    <form id="register" submit="return validacion()" >
+        <h3 class="text-center ">Register</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="inputName4">Name</label>
                 <input type="name" class="form-control" id="inputName4" placeholder="Name">
-              </div>
-              <div class="form-group col-md-6">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="inputLastName4">Last Name</label>
                 <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name">
-              </div>
-              <div class="form-group col-md-6">
-                    <label for="inputUser4">User</label>
-                    <input type="text" class="form-control" id="inputUser4" placeholder="">
-              </div>
-              <div class="form-group col-md-6">
-                    <label for="inputTel">Tel.</label>
-                    <input type="tel" class="form-control" id="inputTel4" placeholder="Tel.">
-              </div>
             </div>
-            <!-- <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputService">Service</label>
-                <input type="text" class="form-control" id="inputService">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputType">Type</label>
-                <select id="inputType" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>Climatizacion</option>
-                  <option>Pintureria</option>
-                  <option>Plomeria</option>
-                  <option>Electricidad</option>
-                  <option>Gas</option>
-                  <option>Mudanzas</option>
-                  <option>Electrodomesticos</option>
-                  <option>Cocina</option>
-                  <option>Remodelacion y refaccion</option>
-                </select>
-              </div>
-            </div> -->
-            <div class="form-row">
-              <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
+                <label for="inputUser4">User</label>
+                <input type="text" class="form-control" id="inputUser4" placeholder="User">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputTel">Tel.</label>
+                <input type="tel" class="form-control" id="inputTel4" placeholder="Tel.">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="inputPassword">Password</label>
-                <input type="name" class="form-control" id="inputPassword4" placeholder="Password">
-              </div>
-              <div class="form-group col-md-6">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+            <div class="form-group col-md-6">
                 <label for="inputConfirm4">Confirm Password</label>
                 <input type="password" class="form-control" id="inputConfirm4" placeholder="Confirm Password">
-             </div>
-             
-            </div>
-            <div class="form-group">
-              <div class="form-check">
+            </div>     
+        </div>
+        <div class="form-group">
+            <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
-              </div>
+                <label class="form-check-label" for="gridCheck">Check me out</label>
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+        <button id="btn" type="submit" class="btn btn-primary">Sign in</button>
     </form>
 </body>
+<script>    
+    var newuser={}
+    var btn = document.querySelector("#btn");
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
+        newuser.name = document.querySelector("#inputName4").value;
+        newuser.lastname = document.querySelector("#inputLastName4").value;
+        newuser.user = document.querySelector("#inputUser4").value;
+        newuser.tel = document.querySelector("#inputTel4").value;
+        newuser.password = document.querySelector("#inputPassword4").value;
+        newuser.confirm = document.querySelector("#inputConfirm4").value;
+        newuser.check = document.querySelector("#gridCheck");
+
+        
+        function validacion(){
+            if( newuser.name == null || newuser.name.length == 0 || /^\s+$/.test(newuser.name) ) {
+                alert('completar nombre')
+                return false;
+            }
+            if( newuser.lastname == null || newuser.lastname.length == 0 || /^\s+$/.test(newuser.lastname) ) {
+                alert('completar apellido')
+                return false;
+            }
+            if( newuser.user == null || newuser.user.length == 0 || /^\s+$/.test(newuser.user) ) {
+                alert('completar usuario')
+                return false;
+            }
+            if( newuser.tel == null || newuser.tel.length == 0 || /^\s+$/.test(newuser.tel) ) {
+                alert('completar numero de telefono')
+                return false;
+            }
+            if( isNaN(newuser.tel) ) {
+                alert('el numero de telefono debe contener solo numeros')
+                return false;
+            }
+            if( newuser.password == null || newuser.password.length == 0 || /^\s+$/.test(newuser.password) ) {
+                alert('completar contraseña')
+                return false;
+            }
+            if( newuser.confirm == null || newuser.confirm.length == 0 || /^\s+$/.test(newuser.confirm) ) {
+                alert('cinfirmar contraseña')
+                return false;
+            }
+            if(newuser.password != newuser.confirm) {
+                alert('las contraseñas no coinciden')
+                return false;
+            }
+            if( !newuser.check.checked ) {
+                alert('checked!');
+                return false;
+            }
+            
+        return true;
+        }
+    
+        $.ajax({
+        method: "POST",
+        url: "/register",
+        data: {user: JSON.stringify(newuser)},
+        success: function(data){
+            if (validacion(true)){
+                window.location.href = "/login";
+                }
+            }
+        }) 
+    })    
+</script>
 </html>

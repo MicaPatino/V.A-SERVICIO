@@ -14,12 +14,13 @@ footer {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
     background-size: cover;
-	opacity: 0.5;
-	padding: 10%;
+	opacity: 0.4;
+	padding: 2%;
 }
 
+
 #title {
-	padding: 150px;
+	padding: 80px;
 	background-image: url("https://blog.jobandtalent.com/files/2016/07/demanda-empleo.jpg");
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -43,18 +44,10 @@ footer {
 .form-inline {
 	position: relative;
     top: 0;
-    float: left;
+    left: 40rem;
 }
-#login .container #login-row #login-column #login-box {
-	margin-top: 120px;
-	max-width: 600px;
-	height: 320px;
+.card-body {
 	background-color: #EAEAEA;
 }
-#login .container #login-row #login-column #login-box #login-form {
-	padding: 20px;
-}
-#login .container #login-row #login-column #login-box #login-form #register-link {
-	margin-top: -85px;
-}
+
    

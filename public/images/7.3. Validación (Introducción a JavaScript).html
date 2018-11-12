@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://librosweb.es/libro/javascript/capitulo-7/validacion.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" xml:lang="es" lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>7.3. Validación (Introducción a JavaScript)</title>
+                                    <link rel="stylesheet" href="./7.3. Validación (Introducción a JavaScript)_files/app.css">
+                        <link href="./7.3. Validación (Introducción a JavaScript)_files/css" rel="stylesheet" type="text/css">
+        <script src="./7.3. Validación (Introducción a JavaScript)_files/f(6).txt"></script><script src="./7.3. Validación (Introducción a JavaScript)_files/ca-pub-1491000300253750.js.descarga"></script><script async="" src="./7.3. Validación (Introducción a JavaScript)_files/analytics.js.descarga"></script><script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-82842-2', 'librosweb.es');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview');
+        </script>
+                        <link rel="apple-touch-icon" type="image/png" href="https://librosweb.es/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" type="image/png" href="https://librosweb.es/apple-touch-icon.png">
+        <meta name="apple-mobile-web-app-title" content="LibrosWeb">
+        <link rel="shortcut icon" type="image/png" href="https://librosweb.es/favicon.png">
+        <meta name="site-version" content="a7f65a4">
+                <link rel="publisher" href="https://plus.google.com/112008023125011571577">
+                                                    <link rel="prev" href="https://librosweb.es/libro/javascript/capitulo-7/utilidades-basicas-para-formularios.html">
+                    <link rel="next" href="https://librosweb.es/libro/javascript/capitulo-8.html">
+                <link rel="start" href="https://librosweb.es/libro/javascript/">
+                <meta name="twitter:site" content="@librosweb">
+                <link rel="search" type="application/opensearchdescription+xml" href="https://librosweb.es/opensearch/documentation.xml" title="LibrosWeb">
+                <meta property="fb:page_id" content="437758756273955">
+                <meta property="fb:app_id" content="437758756273955">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="7.3. Validación (Introducción a JavaScript)">
+        <meta property="og:image" content="http://www.gravatar.com/avatar/9f219b4dfaa677bfd0f47753c02d5126.png?s=200">
+                <meta name="msapplication-TileColor" content="#CC1414">
+        <meta name="application-name" content="LibrosWeb">
+        <meta name="msapplication-tooltip" content="Libros y tutoriales sobre HTML, CSS, JavaScript, PHP y otras tecnologías web.">
+    <link rel="preload" href="./7.3. Validación (Introducción a JavaScript)_files/f(7).txt" as="script"><script type="text/javascript" src="./7.3. Validación (Introducción a JavaScript)_files/f(7).txt"></script><link rel="preload" href="./7.3. Validación (Introducción a JavaScript)_files/f(8).txt" as="script"><script type="text/javascript" src="./7.3. Validación (Introducción a JavaScript)_files/f(8).txt"></script><link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20181107/r20180604/show_ads_impl.js" as="script"></head>
+
+    <body id="p-1-2" class="books book_page javascript">
+        <div id="header">
+                    <div class="container">
+                <div class="navbar navbar-static-top">
+                    <div id="header-brand" class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu">
+                            <span class="sr-only">Desplegar menú</span>
+                            <i class="fa fa-menu"></i>
+                        </button>
+                        <a class="navbar-brand" href="https://librosweb.es/" title="LibrosWeb.es">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 132 32" preserveAspectRatio="xMinYMin meet">
+<g fill="#CC1414" transform="translate(-21.738 -21.148)">
+<path d="m24.062 23.486v28h9.64v-5h-4.04v-23h-5.6"></path>
+<path d="m40.796 23.486h-5.6v28h5.6v-28"></path>
+<path d="m53.932 37.006c1.48-0.56 2.32-1.76 2.32-4.16v-4.16c0-3.48-1.72-5.2-5.2-5.2h-8.24v28h8.32c3.48 0 5.2-1.72 5.2-5.2v-5.68c0-2.04-0.72-3.12-2.4-3.6m-3.24-7.72v4.64c0 0.68-0.32 1-1 1h-1.32v-6.64h1.32c0.68 0 1 0.32 1 1m-2.32 10.32h1.4c0.68 0 1 0.32 1 1v5.08c0 0.68-0.32 1-1 1h-1.4v-7.08"></path>
+<path d="m69.284 38.246c1.52-0.56 2.4-1.76 2.4-4.16v-5.4c0-3.48-1.72-5.2-5.2-5.2h-8.36v28h5.6v-10.6h1.4c0.68 0 1 0.32 1 1v9.6h5.6v-9.64c0-2.04-0.72-3.12-2.44-3.6m-3.2-8.88v5.76c0 0.68-0.32 1-1 1h-1.36v-7.76h1.36c0.68 0 1 0.32 1 1"></path>
+<path d="m87.513 46.526v-18.08c0-3.48-1.72-5.2-5.2-5.2h-3.6c-3.48 0-5.2 1.72-5.2 5.2v18.08c0 3.48 1.72 5.2 5.2 5.2h3.6c3.48 0 5.2-1.72 5.2-5.2m-5.6-17.48v16.88c0 0.68-0.32 1-1 1h-0.8c-0.68 0-1-0.32-1-1v-16.88c0-0.68 0.32-1 1-1h0.8c0.68 0 1 0.32 1 1"></path>
+<path d="m100.57 36.966-4.8-3.56c-0.68-0.48-0.96-0.92-0.96-1.8v-2.64c0-0.68 0.32-1 1-1h0.44c0.68 0 1 0.32 1 1v4.6h5.48v-5.12c0-3.48-1.72-5.2-5.2-5.2h-3.04c-3.48 0-5.2 1.72-5.2 5.2v4.44c0 2 0.52 3.16 2.24 4.4l4.8 3.56c0.68 0.48 0.96 0.92 0.96 1.8v3.36c0 0.68-0.32 1-1 1h-0.52c-0.68 0-1-0.32-1-1v-5.44h-5.48v5.96c0 3.48 1.72 5.2 5.2 5.2h3.12c3.48 0 5.2-1.72 5.2-5.2v-5.16c0-2.08-0.52001-3.16-2.24-4.4"></path>
+<path d="m106.98 51.486h6.16l1.44-12.72 1.44 12.72h6.16l3.4-28h-4.96l-1.44 14.88-1.6-14.88h-5.28l-1.6 14.92-1.44-14.92h-5.68l3.4 28"></path>
+<path d="m126.87 23.486v28h10.48v-5h-4.88v-6.72h4.6v-5h-4.6v-6.28h4.8v-5h-10.4"></path>
+<path d="m150.26 37.006c1.48-0.56 2.32-1.76 2.32-4.16v-4.16c0-3.48-1.72-5.2-5.2-5.2h-8.24v28h8.32c3.48 0 5.2-1.72 5.2-5.2v-5.68c0-2.04-0.72001-3.12-2.4-3.6m-3.24-7.72v4.64c0 0.68-0.32001 1-1 1h-1.32v-6.64h1.32c0.67999 0 1 0.32 1 1m-2.32 10.32h1.4c0.67999 0 1 0.32 1 1v5.08c0 0.68-0.32001 1-1 1h-1.4v-7.08"></path>
+</g>
+</svg>
+                            <span>LibrosWeb</span>
+                        </a>
+
+                        <div id="header-menu" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                
+                                                                <li class="">
+                                    <a href="https://librosweb.es/">Inicio</a>
+                                </li>
+                                                                <li class="active">
+                                    <a href="https://librosweb.es/libros/">Libros</a>
+                                </li>
+                                                                <li class="">
+                                    <a href="https://librosweb.es/tutoriales/">Tutoriales</a>
+                                </li>
+                                                                <li class="">
+                                    <a href="https://librosweb.es/eventos/">Eventos</a>
+                                </li>
+                                                                <li class="">
+                                    <a href="https://librosweb.es/foro/">Foro</a>
+                                </li>
+                                                                <li class="">
+                                    <a href="https://librosweb.es/buscar">Buscar</a>
+                                </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+        <div id="wrapper" class="container">
+                <div id="book-toc-anchor" class="well visible-xs">
+        <a href="https://librosweb.es/libro/javascript/capitulo-7/validacion.html#indice">Ver índice de contenidos del libro</a>
+    </div>
+
+    <ol class="hidden-xs breadcrumb">
+        <li class="breadcrumb__item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <a href="https://librosweb.es/libros/" itemprop="url"><span itemprop="title">Libros</span></a>
+        </li>
+
+        <li class="breadcrumb__item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <a href="https://librosweb.es/libro/javascript/" itemprop="url"><span itemprop="title">Introducción a JavaScript</span></a>
+        </li>
+
+            <li class="breadcrumb__item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <a href="https://librosweb.es/libro/javascript/capitulo-7.html" itemprop="url"><span itemprop="title">Capítulo 7. Formularios</span></a>
+        </li>
+    
+        <li class="breadcrumb__item">
+            <span>7.3. Validación</span>
+        </li>
+    </ol>
+
+            <div id="content">
+                                    <div class="row">
+                        <div id="main" class="col-md-9">
+                            
+    
+    <h1 id="validacion" class="title">
+        <span>7.3.</span> Validación
+    </h1>
+
+    
+
+<p>La principal utilidad de JavaScript en el manejo de los formularios es la validación de los datos introducidos por los usuarios. Antes de enviar un formulario al servidor, se recomienda validar mediante JavaScript los datos insertados por el usuario. De esta forma, si el usuario ha cometido algún error al rellenar el formulario, se le puede notificar de forma instantánea, sin necesidad de esperar la respuesta del servidor.</p>
+
+<p>Notificar los errores de forma inmediata mediante JavaScript mejora la satisfacción del usuario con la aplicación (lo que técnicamente se conoce como <em>"mejorar la experiencia de usuario"</em>) y ayuda a reducir la carga de procesamiento en el servidor.</p>
+
+<p>Normalmente, la validación de un formulario consiste en llamar a una función de validación cuando el usuario pulsa sobre el botón de envío del formulario. En esta función, se comprueban si los valores que ha introducido el usuario cumplen las restricciones impuestas por la aplicación.</p>
+
+<p>Aunque existen tantas posibles comprobaciones como elementos de formulario diferentes, algunas comprobaciones son muy habituales: que se rellene un campo obligatorio, que se seleccione el valor de una lista desplegable, que la dirección de email indicada sea correcta, que la fecha introducida sea lógica, que se haya introducido un número donde así se requiere, etc.</p>
+
+<p>A continuación se muestra el código JavaScript básico necesario para incorporar la validación a un formulario:</p>
+
+<div class="code html5">
+<pre class="html5"><span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">""</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">""</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">""</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">""</span> <span class="kw3">onsubmit</span><span class="sy0">=</span><span class="st0">"return validacion()"</span>&gt;</span>
+  ...
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span></pre>
+</div>
+
+<p>Y el esquema de la función <code>validacion()</code> es el siguiente:</p>
+
+<div class="code javascript">
+<pre class="javascript"><span class="kw1">function</span> validacion<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">if</span> <span class="br0">(</span>condicion que debe cumplir el primer campo del formulario<span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1">// Si no se cumple la condicion...</span>
+    alert<span class="br0">(</span><span class="st0">'[ERROR] El campo debe tener un valor de...'</span><span class="br0">)</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+  <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">(</span>condicion que debe cumplir el segundo campo del formulario<span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1">// Si no se cumple la condicion...</span>
+    alert<span class="br0">(</span><span class="st0">'[ERROR] El campo debe tener un valor de...'</span><span class="br0">)</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+  ...
+  <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">(</span>condicion que debe cumplir el último campo del formulario<span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1">// Si no se cumple la condicion...</span>
+    alert<span class="br0">(</span><span class="st0">'[ERROR] El campo debe tener un valor de...'</span><span class="br0">)</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+&nbsp;
+  <span class="co1">// Si el script ha llegado a este punto, todas las condiciones</span>
+  <span class="co1">// se han cumplido, por lo que se devuelve el valor true</span>
+  <span class="kw1">return</span> <span class="kw2">true</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>El funcionamiento de esta técnica de validación se basa en el comportamiento del evento <code>onsubmit</code> de JavaScript. Al igual que otros eventos como <code>onclick</code> y <code>onkeypress</code>, el evento <code>'onsubmit</code> varía su comportamiento en función del valor que se devuelve.</p>
+
+<p>Así, si el evento <code>onsubmit</code> devuelve el valor <code>true</code>, el formulario se envía como lo haría normalmente. Sin embargo, si el evento <code>onsubmit</code> devuelve el valor <code>false</code>, el formulario no se envía. La clave de esta técnica consiste en comprobar todos y cada uno de los elementos del formulario. En cuando se encuentra un elemento incorrecto, se devuelve el valor <code>false</code>. Si no se encuentra ningún error, se devuelve el valor <code>true</code>.</p>
+
+<p>Por lo tanto, en primer lugar se define el evento <code>onsubmit</code> del formulario como:</p>
+
+<div class="code javascript">
+<pre class="javascript">onsubmit<span class="sy0">=</span><span class="st0">"return validacion()"</span></pre>
+</div>
+
+<p>Como el código JavaScript devuelve el valor resultante de la función <code>validacion()</code>, el formulario solamente se enviará al servidor si esa función devuelve <code>true</code>. En el caso de que la función <code>validacion()</code> devuelva <code>false</code>, el formulario permanecerá sin enviarse.</p>
+
+<p>Dentro de la función <code>validacion()</code> se comprueban todas las condiciones impuestas por la aplicación. Cuando no se cumple una condición, se devuelve <code>false</code> y por tanto el formulario no se envía. Si se llega al final de la función, todas las condiciones se han cumplido correctamente, por lo que se devuelve <code>true</code> y el formulario se envía.</p>
+
+<p>La notificación de los errores cometidos depende del diseño de cada aplicación. En el código del ejemplo anterior simplemente se muestran mensajes mediante la función <code>alert()</code> indicando el error producido. Las aplicaciones web mejor diseñadas muestran cada mensaje de error al lado del elemento de formulario correspondiente y también suelen mostrar un mensaje principal indicando que el formulario contiene errores.</p>
+
+<p>Una vez definido el esquema de la función <code>validacion()</code>, se debe añadir a esta función el código correspondiente a todas las comprobaciones que se realizan sobre los elementos del formulario. A continuación, se muestran algunas de las validaciones más habituales de los campos de formulario.</p>
+
+<h3 id="validar-un-campo-de-texto-obligatorio">7.3.1. Validar un campo de texto obligatorio</h3>
+
+<p>Se trata de forzar al usuario a introducir un valor en un cuadro de texto o textarea en los que sea obligatorio. La condición en JavaScript se puede indicar como:</p>
+
+<div class="code javascript">
+<pre class="javascript">valor <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> valor <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> valor.<span class="me1">length</span> <span class="sy0">==</span> <span class="nu0">0</span> <span class="sy0">||</span> <span class="co2">/^\s+$/</span>.<span class="me1">test</span><span class="br0">(</span>valor<span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>Para que se de por completado un campo de texto obligatorio, se comprueba que el valor introducido sea válido, que el número de caracteres introducido sea mayor que cero y que no se hayan introducido sólo espacios en blanco.</p>
+
+<p>La palabra reservada <code>null</code> es un valor especial que se utiliza para indicar <em>"ningún valor"</em>. Si el valor de una variable es <code>null</code>, la variable no contiene ningún valor de tipo objeto, array, numérico, cadena de texto o booleano.</p>
+
+<p>La segunda parte de la condición obliga a que el texto introducido tenga una longitud superior a cero caracteres, esto es, que no sea un texto vacío.</p>
+
+<p>Por último, la tercera parte de la condición <code>(/^\s+$/.test(valor))</code> obliga a que el valor introducido por el usuario no sólo esté formado por espacios en blanco. Esta comprobación se basa en el uso de <em>"expresiones regulares"</em>, un recurso habitual en cualquier lenguaje de programación pero que por su gran complejidad no se van a estudiar. Por lo tanto, sólo es necesario copiar literalmente esta condición, poniendo especial cuidado en no modificar ningún carácter de la expresión.</p>
+
+<h3 id="validar-un-campo-de-texto-con-valores-numericos">7.3.2. Validar un campo de texto con valores numéricos</h3>
+
+<p>Se trata de obligar al usuario a introducir un valor numérico en un cuadro de texto. La condición JavaScript consiste en:</p>
+
+<div class="code javascript">
+<pre class="javascript">valor <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> isNaN<span class="br0">(</span>valor<span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>Si el contenido de la variable <code>valor</code> no es un número válido, no se cumple la condición. La ventaja de utilizar la función interna <code>isNaN()</code> es que simplifica las comprobaciones, ya que JavaScript se encarga de tener en cuenta los decimales, signos, etc.</p>
+
+<p>A continuación se muestran algunos resultados de la función <code>isNaN()</code>:</p>
+
+<div class="code javascript">
+<pre class="javascript">isNaN<span class="br0">(</span><span class="nu0">3</span><span class="br0">)</span><span class="sy0">;</span>          <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="st0">"3"</span><span class="br0">)</span><span class="sy0">;</span>        <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="nu0">3.3545</span><span class="br0">)</span><span class="sy0">;</span>     <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="nu0">32323.345</span><span class="br0">)</span><span class="sy0">;</span>  <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="sy0">+</span><span class="nu0">23.2</span><span class="br0">)</span><span class="sy0">;</span>      <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="st0">"-23.2"</span><span class="br0">)</span><span class="sy0">;</span>    <span class="co1">// false</span>
+isNaN<span class="br0">(</span><span class="st0">"23a"</span><span class="br0">)</span><span class="sy0">;</span>      <span class="co1">// true</span>
+isNaN<span class="br0">(</span><span class="st0">"23.43.54"</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">// true</span></pre>
+</div>
+
+<h3 id="validar-que-se-ha-seleccionado-una-opcion-de-una-lista">7.3.3. Validar que se ha seleccionado una opción de una lista</h3>
+
+<p>Se trata de obligar al usuario a seleccionar un elemento de una lista desplegable. El siguiente código JavaScript permite conseguirlo:</p>
+
+<div class="code javascript">
+<pre class="javascript">indice <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"opciones"</span><span class="br0">)</span>.<span class="me1">selectedIndex</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> indice <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> indice <span class="sy0">==</span> <span class="nu0">0</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="sy0">&lt;</span>select id<span class="sy0">=</span><span class="st0">"opciones"</span> name<span class="sy0">=</span><span class="st0">"opciones"</span><span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>option value<span class="sy0">=</span><span class="st0">""</span><span class="sy0">&gt;-</span> Selecciona un valor <span class="sy0">-&lt;/</span>option<span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>option value<span class="sy0">=</span><span class="st0">"1"</span><span class="sy0">&gt;</span>Primer valor<span class="sy0">&lt;/</span>option<span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>option value<span class="sy0">=</span><span class="st0">"2"</span><span class="sy0">&gt;</span>Segundo valor<span class="sy0">&lt;/</span>option<span class="sy0">&gt;</span>
+  <span class="sy0">&lt;</span>option value<span class="sy0">=</span><span class="st0">"3"</span><span class="sy0">&gt;</span>Tercer valor<span class="sy0">&lt;/</span>option<span class="sy0">&gt;</span>
+<span class="sy0">&lt;/</span>select<span class="sy0">&gt;</span></pre>
+</div>
+
+<p>A partir de la propiedad <code>selectedIndex</code>, se comprueba si el índice de la opción seleccionada es válido y además es distinto de cero. La primera opción de la lista (<code>- Selecciona un valor –</code>) no es válida, por lo que no se permite el valor <code>0</code> para esta propiedad <code>selectedIndex</code>.</p>
+
+<h3 id="validar-una-direccion-de-email">7.3.4. Validar una dirección de email</h3>
+
+<p>Se trata de obligar al usuario a introducir una dirección de email con un formato válido. Por tanto, lo que se comprueba es que la dirección <em>parezca</em> válida, ya que no se comprueba si se trata de una cuenta de correo electrónico real y operativa. La condición JavaScript consiste en:</p>
+
+<div class="code javascript">
+<pre class="javascript">valor <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> <span class="sy0">!</span><span class="br0">(</span><span class="co2">/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/</span>.<span class="me1">test</span><span class="br0">(</span>valor<span class="br0">)</span><span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>La comprobación se realiza nuevamente mediante las expresiones regulares, ya que las direcciones de correo electrónico válidas pueden ser muy diferentes. Por otra parte, como el estándar que define el formato de las direcciones de correo electrónico es muy complejo, la expresión regular anterior es una simplificación. Aunque esta regla valida la mayoría de direcciones de correo electrónico utilizadas por los usuarios, no soporta todos los diferentes formatos válidos de email.</p>
+
+<h3 id="validar-una-fecha">7.3.5. Validar una fecha</h3>
+
+<p>Las fechas suelen ser los campos de formulario más complicados de validar por la multitud de formas diferentes en las que se pueden introducir. El siguiente código asume que de alguna forma se ha obtenido el año, el mes y el día introducidos por el usuario:</p>
+
+<div class="code javascript">
+<pre class="javascript"><span class="kw1">var</span> ano <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"ano"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">var</span> mes <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"mes"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">var</span> dia <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"dia"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+&nbsp;
+valor <span class="sy0">=</span> <span class="kw1">new</span> <span class="kw4">Date</span><span class="br0">(</span>ano<span class="sy0">,</span> mes<span class="sy0">,</span> dia<span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">(</span> <span class="sy0">!</span>isNaN<span class="br0">(</span>valor<span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>La función <code>Date(ano, mes, dia)</code> es una función interna de JavaScript que permite construir fechas a partir del año, el mes y el día de la fecha. Es muy importante tener en cuenta que el número de mes se indica de <code>0</code> a <code>11</code>, siendo <code>0</code> el mes de Enero y <code>11</code> el mes de Diciembre. Los días del mes siguen una numeración diferente, ya que el mínimo permitido es <code>1</code> y el máximo <code>31</code>.</p>
+
+<p>La validación consiste en intentar construir una fecha con los datos proporcionados por el usuario. Si los datos del usuario no son correctos, la fecha no se puede construir correctamente y por tanto la validación del formulario no será correcta.</p>
+
+<h3 id="validar-un-numero-de-dni">7.3.6. Validar un número de DNI</h3>
+
+<p>Se trata de comprobar que el número proporcionado por el usuario se corresponde con un número válido de Documento Nacional de Identidad o DNI. Aunque para cada país o región los requisitos del documento de identidad de las personas pueden variar, a continuación se muestra un ejemplo genérico fácilmente adaptable. La validación no sólo debe comprobar que el número esté formado por ocho cifras y una letra, sino que también es necesario comprobar que la letra indicada es correcta para el número introducido:</p>
+
+<div class="code javascript">
+<pre class="javascript">valor <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">var</span> letras <span class="sy0">=</span> <span class="br0">[</span><span class="st0">'T'</span><span class="sy0">,</span> <span class="st0">'R'</span><span class="sy0">,</span> <span class="st0">'W'</span><span class="sy0">,</span> <span class="st0">'A'</span><span class="sy0">,</span> <span class="st0">'G'</span><span class="sy0">,</span> <span class="st0">'M'</span><span class="sy0">,</span> <span class="st0">'Y'</span><span class="sy0">,</span> <span class="st0">'F'</span><span class="sy0">,</span> <span class="st0">'P'</span><span class="sy0">,</span> <span class="st0">'D'</span><span class="sy0">,</span> <span class="st0">'X'</span><span class="sy0">,</span> <span class="st0">'B'</span><span class="sy0">,</span> <span class="st0">'N'</span><span class="sy0">,</span> <span class="st0">'J'</span><span class="sy0">,</span> <span class="st0">'Z'</span><span class="sy0">,</span> <span class="st0">'S'</span><span class="sy0">,</span> <span class="st0">'Q'</span><span class="sy0">,</span> <span class="st0">'V'</span><span class="sy0">,</span> <span class="st0">'H'</span><span class="sy0">,</span> <span class="st0">'L'</span><span class="sy0">,</span> <span class="st0">'C'</span><span class="sy0">,</span> <span class="st0">'K'</span><span class="sy0">,</span> <span class="st0">'E'</span><span class="sy0">,</span> <span class="st0">'T'</span><span class="br0">]</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">(</span> <span class="sy0">!</span><span class="br0">(</span><span class="co2">/^\d{8}[A-Z]$/</span>.<span class="me1">test</span><span class="br0">(</span>valor<span class="br0">)</span><span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">(</span>valor.<span class="me1">charAt</span><span class="br0">(</span><span class="nu0">8</span><span class="br0">)</span> <span class="sy0">!=</span> letras<span class="br0">[</span><span class="br0">(</span>valor.<span class="me1">substring</span><span class="br0">(</span><span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">8</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">%</span>23<span class="br0">]</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>La primera comprobación asegura que el formato del número introducido es el correcto, es decir, que está formado por 8 números seguidos y una letra. Si la letra está al principio de los números, la comprobación sería <code>/^[A-Z]\d{8}$/</code>. Si en vez de ocho números y una letra, se requieren diez números y dos letras, la comprobación sería <code>/^\d{10}[A-Z]{2}$/</code> y así sucesivamente.</p>
+
+<p>La segunda comprobación aplica el algoritmo de cálculo de la letra del DNI y la compara con la letra proporcionada por el usuario. El algoritmo de cada documento de identificación es diferente, por lo que esta parte de la validación se debe adaptar convenientemente.</p>
+
+<h3 id="validar-un-numero-de-telefono">7.3.7. Validar un número de teléfono</h3>
+
+<p>Los números de teléfono pueden ser indicados de formas muy diferentes: con prefijo nacional, con prefijo internacional, agrupado por pares, separando los números con guiones, etc.</p>
+
+<p>El siguiente script considera que un número de teléfono está formado por nueve dígitos consecutivos y sin espacios ni guiones entre las cifras:</p>
+
+<div class="code javascript">
+<pre class="javascript">valor <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span>.<span class="me1">value</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> <span class="sy0">!</span><span class="br0">(</span><span class="co2">/^\d{9}$/</span>.<span class="me1">test</span><span class="br0">(</span>valor<span class="br0">)</span><span class="br0">)</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>Una vez más, la condición de JavaScript se basa en el uso de expresiones regulares, que comprueban si el valor indicado es una sucesión de nueve números consecutivos. A continuación se muestran otras expresiones regulares que se pueden utilizar para otros formatos de número de teléfono:</p>
+
+<div class="table" id="table-7-1">
+
+    <table>
+<thead>
+<tr>
+  <th>Número</th>
+  <th>Expresión regular</th>
+  <th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>900900900</code></td>
+  <td><code>/^\d{9}$/</code></td>
+  <td>9 cifras seguidas</td>
+</tr>
+<tr>
+  <td><code>900-900-900</code></td>
+  <td><code>/^\d{3}-\d{3}-\d{3}$/</code></td>
+  <td>9 cifras agrupadas de 3 en 3 y separadas por guiones</td>
+</tr>
+<tr>
+  <td><code>900 900900</code></td>
+  <td><code>/^\d{3}\s\d{6}$/</code></td>
+  <td>9 cifras, las 3 primeras separadas por un espacio</td>
+</tr>
+<tr>
+  <td><code>900 90 09 00</code></td>
+  <td><code>/^\d{3}\s\d{2}\s\d{2}\s\d{2}$/</code></td>
+  <td>9 cifras, las 3 primeras separadas por un espacio, las siguientes agrupadas de 2 en 2</td>
+</tr>
+<tr>
+  <td><code>(900) 900900</code></td>
+  <td><code>/^\(\d{3}\)\s\d{6}$/</code></td>
+  <td>9 cifras, las 3 primeras encerradas por paréntesis y un espacio de separación respecto del resto</td>
+</tr>
+<tr>
+  <td><code>+34 900900900</code></td>
+  <td><code>/^\+\d{2,3}\s\d{9}$/</code></td>
+  <td>Prefijo internacional (<code>+</code> seguido de 2 o 3 cifras), espacio en blanco y 9 cifras consecutivas</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<h3 id="validar-que-un-checkbox-ha-sido-seleccionado">7.3.8. Validar que un checkbox ha sido seleccionado</h3>
+
+<p>Si un elemento de tipo <em>checkbox</em> se debe seleccionar de forma obligatoria, JavaScript permite comprobarlo de forma muy sencilla:</p>
+
+<div class="code javascript">
+<pre class="javascript">elemento <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"campo"</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">if</span><span class="br0">(</span> <span class="sy0">!</span>elemento.<span class="me1">checked</span> <span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>Si se trata de comprobar que todos los <em>checkbox</em> del formulario han sido seleccionados, es más fácil utilizar un bucle:</p>
+
+<div class="code javascript">
+<pre class="javascript">formulario <span class="sy0">=</span> document.<span class="me1">getElementById</span><span class="br0">(</span><span class="st0">"formulario"</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">for</span><span class="br0">(</span><span class="kw1">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>formulario.<span class="me1">elements</span>.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">var</span> elemento <span class="sy0">=</span> formulario.<span class="me1">elements</span><span class="br0">[</span>i<span class="br0">]</span><span class="sy0">;</span>
+  <span class="kw1">if</span><span class="br0">(</span>elemento.<span class="me1">type</span> <span class="sy0">==</span> <span class="st0">"checkbox"</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">if</span><span class="br0">(</span><span class="sy0">!</span>elemento.<span class="me1">checked</span><span class="br0">)</span> <span class="br0">{</span>
+      <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+    <span class="br0">}</span>
+  <span class="br0">}</span>
+<span class="br0">}</span></pre>
+</div>
+
+<h3 id="validar-que-un-radiobutton-ha-sido-seleccionado">7.3.9. Validar que un radiobutton ha sido seleccionado</h3>
+
+<p>Aunque se trata de un caso similar al de los <em>checkbox</em>, la validación de los <em>radiobutton</em> presenta una diferencia importante: en general, la comprobación que se realiza es que el usuario haya seleccionado algún <em>radiobutton</em> de los que forman un determinado grupo. Mediante JavaScript, es sencillo determinar si se ha seleccionado algún <em>radiobutton</em> de un grupo:</p>
+
+<div class="code javascript">
+<pre class="javascript">opciones <span class="sy0">=</span> document.<span class="me1">getElementsByName</span><span class="br0">(</span><span class="st0">"opciones"</span><span class="br0">)</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">var</span> seleccionado <span class="sy0">=</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="kw1">for</span><span class="br0">(</span><span class="kw1">var</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span>opciones.<span class="me1">length</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">)</span> <span class="br0">{</span>    
+  <span class="kw1">if</span><span class="br0">(</span>opciones<span class="br0">[</span>i<span class="br0">]</span>.<span class="me1">checked</span><span class="br0">)</span> <span class="br0">{</span>
+    seleccionado <span class="sy0">=</span> <span class="kw2">true</span><span class="sy0">;</span>
+    <span class="kw1">break</span><span class="sy0">;</span>
+  <span class="br0">}</span>
+<span class="br0">}</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">(</span><span class="sy0">!</span>seleccionado<span class="br0">)</span> <span class="br0">{</span>
+  <span class="kw1">return</span> <span class="kw2">false</span><span class="sy0">;</span>
+<span class="br0">}</span></pre>
+</div>
+
+<p>El anterior ejemplo recorre todos los <em>radiobutton</em> que forman un grupo y comprueba elemento por elemento si ha sido seleccionado. Cuando se encuentra el primer <em>radiobutton</em> seleccionado, se sale del bucle y se indica que al menos uno ha sido seleccionado.</p>
+
+
+                <div class="module module--ad module--ad--responsive module--ad--bottom">
+        <script async="" src="./7.3. Validación (Introducción a JavaScript)_files/f(9).txt"></script>
+        <ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1491000300253750" data-ad-slot="3770792827" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:870px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:870px;background-color:transparent;"><iframe width="870" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:870px;height:90px;" src="./7.3. Validación (Introducción a JavaScript)_files/saved_resource(1).html"></iframe></ins></ins></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    
+    <ul class="row pager pager--large">
+        <li class="col-xs-6 previous ">
+                            <a href="https://librosweb.es/libro/javascript/capitulo-7/utilidades-basicas-para-formularios.html">
+                    <strong><i class="hidden-xs">←</i> Anterior</strong>
+                    <small>7.2. Utilidades básicas para formularios</small>
+                </a>
+                    </li>
+
+        <li class="col-xs-6 next ">
+                            <a href="https://librosweb.es/libro/javascript/capitulo-8.html">
+                    <strong>Siguiente <i class="hidden-xs">→</i></strong>
+                    <small>Capítulo 8. Otras utilidades</small>
+                </a>
+                    </li>
+    </ul>
+
+                            </div>
+
+                        <div id="sidebar" class="col-md-3">
+                            
+                <div class="module module--ad module--ad--responsive module--ad--sidebar">
+        <script async="" src="./7.3. Validación (Introducción a JavaScript)_files/f(9).txt"></script>
+        <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-1491000300253750" data-ad-slot="3770792827" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:270px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:270px;background-color:transparent;"><iframe width="270" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:270px;height:600px;" src="./7.3. Validación (Introducción a JavaScript)_files/saved_resource(2).html"></iframe></ins></ins></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    
+    <div class="module">
+        <a id="indice"></a>
+
+        <h3>Indice de contenidos</h3>
+        <ul class="book__toc book__toc--compact">
+                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-1.html"><strong>1.</strong> Introducción</a>
+            </li>
+                                                                                                                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-2.html"><strong>2.</strong> El primer script</a>
+            </li>
+                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-3.html"><strong>3.</strong> Programación básica</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-4.html"><strong>4.</strong> Programación avanzada</a>
+            </li>
+                                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-5.html"><strong>5.</strong> DOM</a>
+            </li>
+                                                                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-6.html"><strong>6.</strong> Eventos</a>
+            </li>
+                                                                                            <li class="level-1 ">
+                <a href="https://librosweb.es/libro/javascript/capitulo-7.html">
+                    <span>Capítulo 7.</span> Formularios
+                </a>
+            </li>
+                                            <li class="level-2 ">
+                <a href="https://librosweb.es/libro/javascript/capitulo-7/propiedades-basicas-de-formularios-y-elementos.html">
+                    <span>7.1.</span> Propiedades básicas de formularios y elementos
+                </a>
+            </li>
+                                            <li class="level-2 ">
+                <a href="https://librosweb.es/libro/javascript/capitulo-7/utilidades-basicas-para-formularios.html">
+                    <span>7.2.</span> Utilidades básicas para formularios
+                </a>
+            </li>
+                                            <li class="level-2 active">
+                <a href="https://librosweb.es/libro/javascript/capitulo-7/validacion.html">
+                    <span>7.3.</span> Validación
+                </a>
+            </li>
+                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-8.html"><strong>8.</strong> Otras utilidades</a>
+            </li>
+                                                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-9.html"><strong>9.</strong> Detección y corrección de errores</a>
+            </li>
+                                                                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-10.html"><strong>10.</strong> Recursos útiles</a>
+            </li>
+                                            <li class="level-1">
+                <a href="https://librosweb.es/libro/javascript/capitulo-11.html"><strong>11.</strong> Ejercicios resueltos</a>
+            </li>
+                                                                                                                                                                                                                                                                                                                                        </ul>
+    </div>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+
+        <div id="footer">
+                    <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-9">
+                        © 2006-2018 LibrosWeb.es
+                        <a href="https://librosweb.es/sitio/contacto">Contacto</a>
+                        <a href="https://plus.google.com/+librosweb">Novedades</a>
+                        <a href="https://librosweb.es/sitio/condiciones">Condiciones</a>
+                        <a href="https://librosweb.es/sitio/privacidad">Privacidad</a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 pull-right">
+                        <div class="metric metric--dimmed metric--textright">
+                            <div class="metric__value">4.352</div>
+                            <div class="metric__label">días online</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+                                    <script async="" src="./7.3. Validación (Introducción a JavaScript)_files/app.js.descarga"></script>
+                        
+
+<iframe id="google_osd_static_frame_9134023411407" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./7.3. Validación (Introducción a JavaScript)_files/saved_resource(3).html"></iframe></body><iframe id="google_shimpl" style="display: none;" src="./7.3. Validación (Introducción a JavaScript)_files/saved_resource(4).html"></iframe></html>
