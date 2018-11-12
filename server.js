@@ -26,13 +26,12 @@ app.post('/login', function(request,response){
 		if(user.password == login.password && user.user == login.username){
 		return user;
 	}});
-	console.log(result)
 	if(result.length > 0) {
 		response.json({status:200});
 	}
-	  else {
-	  	response.json({status:404});
-		}		  
+	else {
+	  response.json({status:404});
+	}		  
 });
 
 app.get('/register', function(request, response) {
@@ -50,6 +49,24 @@ app.get('/account', function(request, response) {
   response.sendFile(path.join(__dirname + '/public/account.html'));  
 });
 
+app.get ("/get-servicios", function(req,res) {
+	res.json(JSON.stringify(services))
+})
+
+var services = [
+	{
+		servicio:'',
+		especificaciones:'',
+		tel:'',
+		user:'',
+	},
+	{
+		servicio:'',
+		especificaciones:'',
+		tel:'',
+		user:'',
+	}
+]
 
 app.listen(3000, function() {
   console.log('server express ready!');

@@ -12,12 +12,28 @@
             position: relative;
             left: 87%;
         }
-        #myservice {
-            display: inline-block;
-        }
         #form {
+            position: relative;
             margin: 1% 5%;
             display: inline-block;
+        }
+        .col-sm-4 {
+            margin: 1%;
+            display: inline-block;
+        }
+        .f {
+            float: right;
+            width: 73%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            top: 25px;
+        }
+        .card-body {
+            display: inline-block;
+            margin: 5px;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -79,16 +95,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-5">
                 <button id="add" type="button" class="btn btn-success btn-lg">Agregar servicio</button>
             </div>      
         </form>    
-        <div id="myservice">
-            <!-- <div class="card-body"> -->
-                <!-- <h5 id="type" class="card-title"></h5>
-                <h6 id="specifications" class="card-subtitle mb-2 text-muted"></h6>
-                <a>eliminar servicio</a> -->
-            <!-- </div> -->
+        <div class="f">
+            <div class="row" id="myservices">
+            </div>
         </div>
     </section>
     <footer>
@@ -113,20 +125,23 @@
         })
         var btn = document.querySelector("#add");
 
-        var myservice = function (e){
+        var myservices = function(){
             var inputType = document.querySelector("#inputType").value;
             var inputSpecifications = document.querySelector("#inputSpecifications").value;
 
-            var service = "<div class='card-body'><h5 class='card-title'>" + inputType + "</h5><h6 class='card-subtitle mb-2 text-muted'>"+ inputSpecifications +"</h6></div>"
-            var caja = document.querySelector("#myservice")
-            caja.insertAdjacentHTML("afterbegin",service);
+            var service = "<div class='col-sm-4'><div class='card'><div class='card-body'><h5 class='card-title'>" + inputType + "</h5><p class='card-text'>"+ inputSpecifications +"</p></div></div></div>"
+            var caja = document.querySelector("#myservices")
+            caja.insertAdjacentHTML('afterend',service);
 
             inputSpecifications.value = '';
             inputType.value = '';
 
         }
         btn.addEventListener("click",function(e){
-            myservice()
+            myservices()
         })
+
+        localStorage.setItem("type", JSON.stringify(inputType));
+        localStorage.setItem("specifications", JSON.stringify(inputSpecifications));
 </script>
 </html>

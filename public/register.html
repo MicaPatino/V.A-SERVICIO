@@ -90,7 +90,6 @@
         newuser.password = document.querySelector("#inputPassword4").value;
         newuser.confirm = document.querySelector("#inputConfirm4").value;
         newuser.check = document.querySelector("#gridCheck");
-
         
         function validacion(){
             if( newuser.name == null || newuser.name.length == 0 || /^\s+$/.test(newuser.name) ) {
@@ -143,6 +142,7 @@
                 }
             }
         }) 
+        localStorage.setItem("tel", JSON.stringify(newuser.tel))
     })    
 </script>
 </html>
