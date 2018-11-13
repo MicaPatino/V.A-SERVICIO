@@ -85,7 +85,7 @@
                         <option>Mudanzas</option>
                         <option>Electrodomesticos</option>
                         <option>Cocina</option>
-                        <option>Remodelacion y refaccion</option>
+                        <option>Remodelacion</option>
                     </select>
                 </div>
             </div>
@@ -110,6 +110,8 @@
 <script>
         var username = localStorage.getItem("username");
         var user = localStorage.getItem("user");
+        var tel = localStorage.getItem("tel");
+
         if (user != null) {
             document.getElementById("ingresar").style.display="none";
             document.getElementById("username").innerHTML = JSON.parse(username);
@@ -130,10 +132,6 @@
             var inputType = document.querySelector("#inputType").value;
             var inputSpecifications = document.querySelector("#inputSpecifications").value;
 
-            var service = "<div class='col-sm-4'><div class='card'><div class='card-body'><h5 class='card-title'>" + inputType + "</h5><p class='card-text'>"+ inputSpecifications +"</p></div></div></div>"
-            var caja = document.querySelector("#myservices")
-            caja.insertAdjacentHTML('afterend',service);
-
             inputSpecifications.value = '';
             inputType.value = '';
         
@@ -143,14 +141,29 @@
             data: {service :{ 
                     servicio: inputType,
                     especificaciones: inputSpecifications,
-                    tel:'',
+                    tel: tel,
                     user: username,
                     },
                 }, 
             success:function(data){
                 console.log(data);
             }
-            })
+            });
+
+            $.ajax({
+                method: "GET",
+                url: "/get-service",
+                success: function(data) {
+                    var i = 0;
+                    while(i<data.length){
+                        console.log(data[i]);
+                        var service = "<div class='col-sm-4'><div class='card'><div class='card-body'><h5 class='card-title'>" + data[i].servicio + "</h5><p class='card-text'>"+ data[i].especificaciones +"</p></div></div></div>"
+                        var caja = document.querySelector("#myservices")
+                        caja.insertAdjacentHTML('afterend',service);
+                        i++;
+                    }
+                }
+		});
         }
 
         btn.addEventListener("click",function(e){

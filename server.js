@@ -50,14 +50,17 @@ app.get('/account', function(request, response) {
   response.sendFile(path.join(__dirname + '/public/account.html'));  
 });
 
-app.get("/add-service", function(request,response){
-
+app.get("/get-service", function(request,response){
+	response.json(services)
 
 });
 
+var services = [];
+
 app.post ("/add-service", function(request,response) {
 	var service = request.body.service;
-	var services = [service]
+	services.push(service)
+	
 	// console.log(services)
 	response.json({status:200})
 });

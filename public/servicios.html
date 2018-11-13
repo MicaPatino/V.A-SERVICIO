@@ -5,15 +5,19 @@
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<style>
 			.col-2 {
-				background-color: #d6ff7f;
+				background-color: #ffa0004d;
 				margin: 4%;
 				text-align: center;
+				display: inline-block;
+				border: 2px solid black;
+				padding: 1%;
+				border-radius: 1em;
 			}
 			img {
 				width: 100%;
 				margin-bottom: 10%;	
 			}
-			p {
+			h4 {
 				font-family: sans-serif;
 				margin-top: 9px;
 				font-weight: bold;
@@ -49,46 +53,7 @@
 		</nav>
 	</header>
 	<div class="row">
-		<div class="col-2">
-			<p>Climatizacion</p>
-			<a title="climatizacion" href="/servicios/climatizacion"><img src="./images/climatizacion.jpg" alt="climatizacion"></a>
-		</div>
-		<div class="col-2">
-			<p>Pintura</p>
-			<a title="pintura" href="/servicios/pintura"><img src="./images/pintura.jpg" alt="pintura"></a>
-		</div>
-		<div class="col-2">
-			<p>Plomeria</p>
-			<a title="plomeria" href="/servicios/plomeria"><img src="./images/plomeria.jpg" alt="plomeria"></a>
-		</div>
-		<div class="col-2">
-			<p>Electricidad</p>
-			<a title="electricidad" href="/servicios/electricidad"><img src="./images/electricidad.jpg" alt="electricidad"></a>
-		</div>
-		<div class="col-2">
-			<p>Gas</p>
-			<a title="gas" href="/servicios/gas"><img src="./images/gas.jpg" alt="gas"></a>
-		</div>
-		<div class="col-2">
-			<p>Mudanzas</p>
-			<a title="mudanzas" href="/servicios/mudanzas"><img src="./images/mudanzas.jpg" alt="mudanzas"></a>
-		</div>
-		<div class="col-2">
-			<p>Electrodomesticos</p>
-			<a title="electrodomesticos" href="/servicios/electrodomesticos"><img src="./images/electrodomestico.jpg" alt="electrodomesticos"></a>
-		</div>
-		<div class="col-2">
-			<p>Cocina</p>
-			<a title="cocina" href="/servicios/cocina"><img src="./images/cocina.jpg" alt="cocina"></a>
-		</div>
-		<div class="col-2">
-			<p>Remodelacion y refacciones</p>
-			<a title="remodelacion y refaccion" href="/servicios/remodelacion-y-refaccion"><img src="./images/refaccion.jpg" alt="remodelacion y refaccion"></a>
-		</div>
 	</div>
-	<footer>
-
-    </footer>
 </body>
 	<script>
 		var username = localStorage.getItem("username");
@@ -105,15 +70,20 @@
 		var tel = localStorage.getItem("tel");
 		var user = localStorage.getItem("username");
 
-		console.log( tel, user);
-
 		$.ajax({
 			method: "GET",
-			url: "/add-service",
+			url: "/get-service",
 			success: function(data) {
-				console.log(services)
-
+				var i = 0;
+				while(i<data.length){
+					console.log(data[i]);
+					var p = document.querySelector(".row")
+					var img = "<img src=./images/"+data[i].servicio.toLowerCase()+".jpg>"
+					var service = "<div class='col-2'><h4>"+data[i].servicio+"</h4><br><p>"+data[i].especificaciones+"</p><br>"+img+"<br><span>tel.: "+JSON.parse(data[i].tel)+"</span><br><span>"+JSON.parse(data[i].user)+"</span></div>"
+					p.insertAdjacentHTML('afterend', service)
+					i++;
+				}
 			}
 		});
 	</script>
-</html>
+</html> 
