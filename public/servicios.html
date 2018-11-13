@@ -102,19 +102,17 @@
             document.getElementById("username").style.display="none";
 		}
 		
-		var type = localStorage.getItem("type");
-		var specifications = localStorage.getItem("specifications");
 		var tel = localStorage.getItem("tel");
 		var user = localStorage.getItem("username");
 
-		console.log(type, specifications, tel, user);
+		console.log( tel, user);
 
 		$.ajax({
 			method: "GET",
-			url: "/get-servicios",
+			url: "/add-service",
 			success: function(data) {
-				data = JSON.parse(data);
-				
+				console.log(services)
+
 			}
 		});
 	</script>

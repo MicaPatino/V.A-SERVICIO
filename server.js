@@ -15,6 +15,7 @@ app.get('/servicios', function(request, response) {
   response.sendFile(path.join(__dirname + '/public/servicios.html'));  
 });
 
+
 app.get('/login', function(request, response) {
   response.sendFile(path.join(__dirname + '/public/login.html'));  
 });
@@ -49,24 +50,18 @@ app.get('/account', function(request, response) {
   response.sendFile(path.join(__dirname + '/public/account.html'));  
 });
 
-app.get ("/get-servicios", function(req,res) {
-	res.json(JSON.stringify(services))
-})
+app.get("/add-service", function(request,response){
 
-var services = [
-	{
-		servicio:'',
-		especificaciones:'',
-		tel:'',
-		user:'',
-	},
-	{
-		servicio:'',
-		especificaciones:'',
-		tel:'',
-		user:'',
-	}
-]
+
+});
+
+app.post ("/add-service", function(request,response) {
+	var service = request.body.service;
+	var services = [service]
+	// console.log(services)
+	response.json({status:200})
+});
+
 
 app.listen(3000, function() {
   console.log('server express ready!');
