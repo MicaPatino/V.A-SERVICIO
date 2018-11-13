@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>V.A-Servicios</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	
-	
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
-                    <div id class= "card mt-5">
-                        <div class="card-body">
+                    <div class= "card mt-5">
+                        <div  id="card-login" class="card-body">
                             <form id="login-form" class="form" action="" method="post">
                                 <h3 class="text-center ">Login</h3>
                                 <div class="form-group">
@@ -62,11 +61,11 @@
                 window.location.href = '/account';
             }
             else {
-                localStorage.setItem("error", "usuario y/o contraseña incorrectos")
+                localStorage.setItem("error", "usuario y/o contraseña incorrectos");
                 document.getElementById("alert").innerHTML = localStorage.getItem("error"); 
             }
-        localStorage.setItem("user", JSON.stringify(login),true)
-        localStorage.setItem("username", JSON.stringify(login.username))
+        localStorage.setItem("user", login , true);
+        localStorage.setItem("username", login.username);
         }
 })
 })

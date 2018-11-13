@@ -26,7 +26,7 @@
                 <a id="ingresar" class="nav-link" href="/login">Ingresar</a>
             </li>
             <li>
-                <form class="form-inline">
+                <form id="search" class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
                     <button type="button" class="btn btn-outline-primary">Buscar</button>
                 </form>
@@ -36,11 +36,11 @@
     <section id="body">
         <div id="box">
             <h2>Objetivo</h2>
-            <p>El objetivo es brindar a Villa Allende Parque una página web donde los vecinos puedan ofrecer sus servicios particulares, tales como arreglo de lavarropas, corte de pasto, etc. además que los vecinos conozcan lo que se ofrece en el barrio para poder recurrir a ello cuando se lo necesite.</p>
+            <p>El objetivo es brindar a Villa Allende una página web donde los vecinos puedan ofrecer sus servicios particulares, tales como arreglo de lavarropas, corte de pasto, etc. además que los vecinos conozcan lo que se ofrece en el barrio para poder recurrir a ello cuando se lo necesite.</p>
         </div>
         <div id="box">
             <h2>¿Cómo se usa?</h2>
-            <p></p>
+            <video src="./video/comoseusa.mp4" type="video/mp4" controls></video>
         </div>
     </section>
     <footer>
@@ -51,12 +51,11 @@
         var user = localStorage.getItem("user");
         if (user != null) {
             document.getElementById("ingresar").style.display="none";
-            document.getElementById("username").innerHTML = JSON.parse(username);
+            document.getElementById("username").innerHTML = username;
         }
         else {
             document.getElementById("ingresar").style.display="block";
             document.getElementById("username").style.display="none";
         }
-    
 </script>
 </html>

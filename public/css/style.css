@@ -3,6 +3,9 @@ h2 {
 	position: relative;
     bottom: 15px;
 }
+h5 {
+	text-align: center;
+}
 
 nav {
 	width: 90%;
@@ -18,6 +21,17 @@ footer {
 	padding: 2%;
 }
 
+img {
+	width: 100%;
+	margin-bottom: 10%;	
+}
+
+video {
+	width: 70%;
+    /* text-align: center; */
+    position: relative;
+    left: 15%;
+}
 
 #title {
 	padding: 80px;
@@ -33,7 +47,7 @@ footer {
 
 #body {
 	background-color: #fff;
-	height: 500px;
+	height: 50rem;
 }
 
 #box {
@@ -41,13 +55,65 @@ footer {
     margin: 57px;
 }
 
-.form-inline {
+#search {
 	position: relative;
     top: 0;
     left: 40rem;
 }
-.card-body {
+
+#card-login {
 	background-color: #EAEAEA;
+}
+
+#add {
+	display: block;
+	margin: 2% 6%;
+}
+
+#logout {
+	position: relative;
+	left: 87%;
+}
+
+#form {
+	position: relative;
+	margin: 1% 5%;
+	display: inline-block;
+}
+
+#card-1 {
+	margin: 1%;
+	display: inline-block;
+}
+
+#card-2 {
+	border: 2px solid darkseagreen;
+}
+
+#allServices {
+	float: right;
+	width: 73%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	top: 25px;
+}
+
+#card-account {
+	display: inline-block;
+	margin: 5px;
+}
+
+#box-service {
+	background-color: #ffa0004d;
+	margin: 4%;
+	text-align: center;
+	display: inline-block;
+	border: 2px solid black;
+	padding: 1%;
+	border-radius: 1em;
 }
 
    

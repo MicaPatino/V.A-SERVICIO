@@ -51,7 +51,7 @@ app.get('/account', function(request, response) {
 });
 
 app.get("/get-service", function(request,response){
-	response.json(services)
+	response.json(services);
 
 });
 
@@ -59,9 +59,7 @@ var services = [];
 
 app.post ("/add-service", function(request,response) {
 	var service = request.body.service;
-	services.push(service)
-	
-	// console.log(services)
+	services.push(service);
 	response.json({status:200})
 });
 
